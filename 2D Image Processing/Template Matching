@@ -1,0 +1,30 @@
+#Template matching:
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+image = cv2.imread('messi.png',0)
+image_copy = image.copy()
+template = cv2.imread('template.png',0)
+width, height = template.shape[::-1]
+
+
+method ='cv2.TM_CCOEFF'
+image = image.copy()
+ 
+# Using template matching function
+res = cv2.matchTemplate(image,template,cv2.TM_CCOEFF)
+min_value, max_value, min_location, max_location = cv2.minMaxLoc(res)
+top_left = max_location
+bottom_right = (top_left[0] + width, top_left[1] + height)
+#detect point
+cv2.rectangle(image,top_left, bottom_right, 255, 2)
+
+#plot
+plt.subplot(121),plt.imshow(res,cmap = 'gray')
+plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
+plt.subplot(122),plt.imshow(image,cmap = 'gray')
+plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+plt.suptitle("Method used - "+method)
+plt.show()
