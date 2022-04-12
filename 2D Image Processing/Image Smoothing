@@ -1,0 +1,17 @@
+
+import cv2
+import matplotlib.pyplot as plt
+# Read in image
+#question 2 -a 
+x1=600
+y1=50
+h1=500
+w1=330
+image = cv2.imread('image02.jpg')
+crop_img = image[y1:y1+h1, x1:x1+w1]
+
+blur = cv2.GaussianBlur(image,(0, 0), 4); 
+
+blur[y1:y1+h1, x1:x1+w1] = crop_img
+cv2.imwrite("blurred_image.jpg",blur)
+plt.imshow(blur)
