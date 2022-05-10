@@ -1,0 +1,77 @@
+#Creat a Logistic Regression using scikit Learn
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+
+# Generate a dataset
+# x = sampel values, y = categorical values
+
+
+from sklearn.datasets import make_classification
+
+x,y = make_classification(
+    n_samples = 200,
+    n_features = 1,
+    n_redundant = 0,
+    n_repeated = 0,
+    n_classes = 2,
+    n_clusters_per_class = 1,
+    n_informative = 1
+    )
+
+print(x,y)
+
+
+#Its always better to visualise the data
+#scatter plot
+
+plt.scatter(x,y,c=y,cmap ='rainbow')
+plt.title('Scatter Plot for the data generated')
+plt.show()
+
+
+#split the data to training and testing
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(x,y, test_size = 0.2)
+
+
+
+#Normalise the dataset
+from sklearn.preprocessing import StandardScaler
+
+sclr = StandardScaler()
+sclr.fit(x_train)
+
+x_train = sclr.transform(x_train)
+x_test = sclr.transform(x_test)
+
+
+
+# Fit the training data to the logistic regression
+from sklearn.linear_model import LogisticRegression
+
+log_reg = LogisticRegression()
+log_reg.fit(x_train,y_train)
+
+
+#make prediction using test data
+y_pred = log_reg.predict(x_test)
+#print(y_pred)
+
+
+from sklearn.metrics import confusion_matrix
+from seaborn import heatmap
+
+confusion = confusion_matrix(y_test,y_pred)
+heatmap(confusion, annot = True)
+plt.xlabel('Predicted classes')
+plt.ylabel('true classes')
+plt.title('confusion matrix of the Logistic Regression')
+
+
+#test the accuracy of the Logistic Regression
+from sklearn.metrics import accuracy_score
+accuracy_score(y_test, y_pred)
+
