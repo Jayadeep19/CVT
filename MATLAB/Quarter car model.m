@@ -1,6 +1,4 @@
 %% Exercise 7:(Oscillations 2)
-%Name: Naga Jayadeep Narla             Matrikel Number : 419348
-% Name : Sai Lalith Polawar            Matrikel number: 419278
 
 clc;
 clear all;
