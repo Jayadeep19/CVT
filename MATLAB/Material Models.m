@@ -1,8 +1,7 @@
 %% Exercise 4
 %    Program for creep test of a given stress curve
 %    modelling and Analysis (SS 2021)(Material Modelling)
-%%    Names: 1)Naga Jayadeep Narla,(Matrikel Nummer: 419348)
-%%           2)Sai Lalith Polawar,(matrikel Nummer: 419278)
+
 %% Step -1: Generate the given stress graph
 %define the X-axis (time):
 t0 = 0;
