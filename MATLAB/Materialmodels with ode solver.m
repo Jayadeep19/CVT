@@ -1,7 +1,6 @@
 % Exercise 5
 % 
-% Name : Naga Jayadeep Narla           Matrikel Nummer : 419348
-% Name : Sai Lalith Polawar            Matrikel Nummer : 416125
+
 %% Creep behaviour
 % For the first stress graph.
 clc
